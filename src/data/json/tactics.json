@@ -1,0 +1,18 @@
+[
+  {
+    "clubId": "nickelodeon-fc",
+    "formation": "4-2-3-1",
+    "mentality": "Attacking",
+    "pressingIntensity": "High",
+    "defensiveLine": "High",
+    "passingStyle": "Short",
+    "tempo": "Fast",
+    "width": "Wide",
+    "counterAttack": false,
+    "playmakerId": "nfc-lang",
+    "captainId": "nfc-lang",
+    "penaltyTakerId": "nfc-icy",
+    "freeKickTakerId": "nfc-lang",
+    "cornerTakerId": "nfc-lang"
+  }
+]

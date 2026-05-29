@@ -1,0 +1,38 @@
+[
+  {
+    "id": "nickelodeon-fc",
+    "name": "Nickelodeon FC",
+    "shortName": "Nickelodeon",
+    "country": "Netherlands",
+    "city": "Amsterdam",
+    "stadiumName": "Slime Arena",
+    "stadiumCapacity": 67230,
+    "primaryColor": "Orange",
+    "secondaryColor": "Green",
+    "reputation": "Elite",
+    "budget": 287300000,
+    "leagueId": "spotify-super-liga",
+    "rivalClubIds": ["hondsberg-fc"],
+    "tacticalIdentity": "Attacking, technical, entertainment-focused",
+    "squadIds": [],
+    "logoPath": ""
+  },
+  {
+    "id": "hondsberg-fc",
+    "name": "Hondsberg FC",
+    "shortName": "Hondsberg",
+    "country": "Netherlands",
+    "city": "Tilburg",
+    "stadiumName": "Hondsberg Park",
+    "stadiumCapacity": 28400,
+    "primaryColor": "Dark Blue",
+    "secondaryColor": "White",
+    "reputation": "Balanced",
+    "budget": 42000000,
+    "leagueId": "spotify-super-liga",
+    "rivalClubIds": ["nickelodeon-fc"],
+    "tacticalIdentity": "Physical, disciplined, counter-attacking",
+    "squadIds": [],
+    "logoPath": ""
+  }
+]

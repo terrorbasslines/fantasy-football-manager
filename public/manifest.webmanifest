@@ -1,0 +1,18 @@
+{
+  "name": "Fantasy Football Text Manager",
+  "short_name": "FF Text Manager",
+  "description": "A text-based fictional football management simulator.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#11120f",
+  "theme_color": "#11120f",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

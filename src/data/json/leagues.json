@@ -1,0 +1,15 @@
+[
+  {
+    "id": "spotify-super-liga",
+    "name": "Spotify Super Liga",
+    "country": "Netherlands",
+    "teams": 18,
+    "format": "Double round-robin",
+    "matchesPerClub": 34,
+    "pointsForWin": 3,
+    "pointsForDraw": 1,
+    "pointsForLoss": 0,
+    "relegationSpots": 2,
+    "playoffSpot": 16
+  }
+]

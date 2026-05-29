@@ -1,0 +1,36 @@
+import type { Tactics } from "../types/football";
+
+export const tactics: Tactics[] = [
+  {
+    clubId: "nickelodeon-fc",
+    formation: "4-2-3-1",
+    mentality: "Attacking",
+    pressingIntensity: "High",
+    defensiveLine: "High",
+    passingStyle: "Short",
+    tempo: "Fast",
+    width: "Wide",
+    counterAttack: false,
+    playmakerId: "nfc-lang",
+    captainId: "nfc-lang",
+    penaltyTakerId: "nfc-icy",
+    freeKickTakerId: "nfc-lang",
+    cornerTakerId: "nfc-lang",
+  },
+  {
+    clubId: "hondsberg-fc",
+    formation: "4-4-2",
+    mentality: "Balanced",
+    pressingIntensity: "Medium",
+    defensiveLine: "Standard",
+    passingStyle: "Direct",
+    tempo: "Normal",
+    width: "Standard",
+    counterAttack: true,
+    playmakerId: "hfc-mees",
+    captainId: "hfc-sven",
+    penaltyTakerId: "hfc-kai",
+    freeKickTakerId: "hfc-mees",
+    cornerTakerId: "hfc-niek",
+  },
+];

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "nfc-lang",
+    "displayName": "Lin-Sy Fenne Lang",
+    "age": 23,
+    "nationality": "Dutch",
+    "clubId": "nickelodeon-fc",
+    "position": "CAM",
+    "secondaryPositions": ["CM", "RW"],
+    "overall": 91,
+    "potential": 94,
+    "preferredFoot": "Right",
+    "height": "1.70 m",
+    "bodyType": "Lean",
+    "traits": ["Flair", "Playmaker", "Long Shot Taker", "Free Kick Specialist"],
+    "personality": "Creative, confident, competitive",
+    "minifacePath": ""
+  },
+  {
+    "id": "nfc-icy",
+    "displayName": "Icy van Dalen",
+    "age": 21,
+    "nationality": "Dutch",
+    "clubId": "nickelodeon-fc",
+    "position": "ST",
+    "secondaryPositions": ["LW"],
+    "overall": 86,
+    "potential": 91,
+    "preferredFoot": "Left",
+    "height": "1.76 m",
+    "bodyType": "Athletic",
+    "traits": ["Clinical Finisher", "First Touch", "Outside Foot Shot"],
+    "personality": "Cold under pressure, ambitious",
+    "minifacePath": ""
+  }
+]
