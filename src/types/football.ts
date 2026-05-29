@@ -2,6 +2,10 @@ export type Reputation = "Elite" | "High" | "Balanced" | "Developing" | "Modest"
 export type Morale = "Excellent" | "Good" | "Okay" | "Low" | "Poor";
 export type InjuryStatus = "Fit" | "Doubtful" | "Injured";
 export type PreferredFoot = "Right" | "Left" | "Both";
+export type CompetitionType = "league" | "cup" | "european";
+export type TrainingFocus = "fitness" | "attack" | "defence" | "set-pieces" | "youth" | "rest";
+export type CalendarEntryType = "match" | "training" | "transfer-window-open" | "transfer-window-close" | "international-break" | "season-start" | "season-end";
+
 export type Position =
   | "GK"
   | "RB"
@@ -35,6 +39,7 @@ export interface Club {
   tacticalIdentity: string;
   squadIds: string[];
   logoPath: string;
+  isUserClub?: boolean;
 }
 
 export interface PlayerStats {
@@ -76,11 +81,14 @@ export interface Player {
   minifacePath: string;
   role?: string;
   stats: PlayerStats;
+  nationalTeam?: string;
+  trainingBoost?: Partial<Record<TrainingFocus, number>>;
 }
 
 export interface League {
   id: string;
   name: string;
+  shortName?: string;
   country: string;
   teamIds: string[];
   promotionRules: string;
@@ -89,6 +97,48 @@ export interface League {
   pointsForDraw: number;
   pointsForLoss: number;
   playoffSpot: number;
+  type: CompetitionType;
+  tier: number;
+  parentLeagueId?: string;
+  europeanSpots?: number;
+  cupId?: string;
+}
+
+export interface CupRound {
+  id: string;
+  name: string;
+  fixtures: Fixture[];
+  completed: boolean;
+}
+
+export interface Cup {
+  id: string;
+  name: string;
+  shortName: string;
+  country: string;
+  type: CompetitionType;
+  currentRound: number;
+  rounds: CupRound[];
+  teamIds: string[];
+}
+
+export interface EuropeanGroup {
+  groupId: string;
+  teamIds: string[];
+  fixtures: Fixture[];
+  table: LeagueTableRow[];
+}
+
+export interface EuropeanCompetition {
+  id: string;
+  name: string;
+  shortName: string;
+  type: CompetitionType;
+  phase: "group" | "r32" | "r16" | "qf" | "sf" | "final" | "complete";
+  groups: EuropeanGroup[];
+  knockoutRounds: CupRound[];
+  qualifiedTeamIds: string[];
+  season: string;
 }
 
 export interface Tactics {
@@ -124,11 +174,14 @@ export interface Fixture {
   awayClubId: string;
   played: boolean;
   result?: MatchResult;
+  competitionId?: string;
+  competitionName?: string;
+  date?: string;
 }
 
 export interface MatchEvent {
   minute: number;
-  type: "commentary" | "goal" | "card" | "injury" | "substitution";
+  type: "commentary" | "goal" | "card" | "injury" | "substitution" | "tactical";
   text: string;
   clubId?: string;
   playerId?: string;
@@ -162,6 +215,25 @@ export interface MatchResult {
   commentary: MatchEvent[];
 }
 
+export interface LiveMatchState {
+  fixture: Fixture;
+  homeClubId: string;
+  awayClubId: string;
+  currentMinute: number;
+  homeGoals: number;
+  awayGoals: number;
+  events: MatchEvent[];
+  substitutionsUsed: { home: number; away: number };
+  homeLineup: string[];
+  awayLineup: string[];
+  homeBench: string[];
+  awayBench: string[];
+  homeTactics?: Tactics;
+  awayTactics?: Tactics;
+  isFinished: boolean;
+  pendingEvents: MatchEvent[];
+}
+
 export interface LeagueTableRow {
   clubId: string;
   played: number;
@@ -175,13 +247,42 @@ export interface LeagueTableRow {
   form: string[];
 }
 
+export interface CalendarEntry {
+  id: string;
+  date: string;
+  type: CalendarEntryType;
+  title: string;
+  description?: string;
+  fixtureId?: string;
+  competitionId?: string;
+  trainingFocus?: TrainingFocus;
+  completed?: boolean;
+}
+
+export interface TransferOffer {
+  id: string;
+  playerId: string;
+  fromClubId: string;
+  toClubId: string;
+  amount: number;
+  status: "pending" | "accepted" | "rejected";
+  date: string;
+}
+
 export interface InboxMessage {
   id: string;
   date: string;
-  type: "Board" | "Injury" | "Transfer" | "Player" | "Preview" | "Report" | "Rival" | "League";
+  type: "Board" | "Injury" | "Transfer" | "Player" | "Preview" | "Report" | "Rival" | "League" | "International" | "Cup";
   title: string;
   body: string;
   read: boolean;
+}
+
+export interface NationalTeamSelection {
+  country: string;
+  playerIds: string[];
+  competition: string;
+  dates: string[];
 }
 
 export interface CareerSave {
@@ -200,6 +301,13 @@ export interface CareerSave {
   inbox: InboxMessage[];
   lastMatchResult?: MatchResult;
   updatedAt: string;
+  // New fields
+  cups?: Cup[];
+  europeanCompetitions?: EuropeanCompetition[];
+  calendar?: CalendarEntry[];
+  transferOffers?: TransferOffer[];
+  liveMatchState?: LiveMatchState;
+  nationalTeamSelections?: NationalTeamSelection[];
 }
 
 export interface DatabaseState {
@@ -207,4 +315,15 @@ export interface DatabaseState {
   players: Player[];
   leagues: League[];
   tactics: Tactics[];
+  cups?: Cup[];
+  europeanCompetitions?: EuropeanCompetition[];
+}
+
+export interface CustomClubConfig {
+  name: string;
+  shortName: string;
+  city: string;
+  stadiumName: string;
+  primaryColor: string;
+  secondaryColor: string;
 }
